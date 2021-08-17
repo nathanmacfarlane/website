@@ -8,6 +8,9 @@ import { useScroll } from "../hooks/useScroll";
 import { useWindowSize } from "react-use";
 import Confetti from "react-confetti";
 
+// Check if window is defined (so if in the browser or in node.js).
+const isBrowser = typeof window !== "undefined";
+
 export const Splash = ({ section }) => {
   const { y, scrollTo } = useScroll();
   const [className, setClassName] = React.useState("div-hidden");
@@ -15,7 +18,9 @@ export const Splash = ({ section }) => {
   const [showConfetti, setShowConfetti] = React.useState(false);
 
   const { width } = useWindowSize();
-  const height = document.getElementsByClassName("wrapper")[0]?.clientHeight;
+  const height = isBrowser
+    ? document.getElementsByClassName("wrapper")[0]?.clientHeight
+    : 0;
 
   React.useEffect(() => {
     if (y !== undefined && y < 100) {
