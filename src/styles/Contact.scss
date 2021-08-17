@@ -1,0 +1,13 @@
+@import 'colors';
+
+.contact-title {
+    text-align: center;
+    color: $text-primary-color;
+    margin: 0;
+    padding: 10px 0px;
+}
+
+.contact-email {
+    color: $text-blue-color;
+    cursor: pointer;
+}

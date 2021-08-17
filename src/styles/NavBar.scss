@@ -1,0 +1,28 @@
+@import 'colors';
+@import 'fonts';
+
+.nav-bar {
+    display: flex;
+    position: fixed;
+    flex-direction: row-reverse;
+    padding: 20px;
+    top: 0px;
+    right: 0px;
+    width: 100vw;
+    background-color: rgba($background-primary-color, 0.7);
+    backdrop-filter: blur(3px);
+    box-shadow: 0 10px 10px -10px #0b0b0f;
+    z-index: 11;
+}
+
+.nav-item {
+    font-size: 1.5em;
+    font-family: $primary-font;
+    padding: 0px 20px 0px 20px;
+}
+
+.nav-item-num {
+    color: $text-blue-color;
+    font-family: $mono-font;
+    font-size: 1.3em;
+}
