@@ -5,8 +5,6 @@ import { Icon } from "../components/Icon";
 import { Shake } from "../components/Shake";
 import { motion } from "framer-motion";
 import { useScroll } from "../hooks/useScroll";
-import { useWindowSize } from "react-use";
-import Confetti from "react-confetti";
 
 // Check if window is defined (so if in the browser or in node.js).
 const isBrowser = typeof window !== "undefined";
@@ -14,13 +12,6 @@ const isBrowser = typeof window !== "undefined";
 export const Splash = ({ section }) => {
   const { y, scrollTo } = useScroll();
   const [className, setClassName] = React.useState("div-hidden");
-
-  const [showConfetti, setShowConfetti] = React.useState(false);
-
-  const { width } = useWindowSize();
-  const height = isBrowser
-    ? document.getElementsByClassName("wrapper")[0]?.clientHeight
-    : 0;
 
   React.useEffect(() => {
     if (y !== undefined && y < 100) {
@@ -34,14 +25,6 @@ export const Splash = ({ section }) => {
 
   return (
     <div className={`splash ${section}`}>
-      <Confetti
-        onConfettiComplete={() => setShowConfetti(false)}
-        recycle={false}
-        numberOfPieces={350}
-        run={showConfetti}
-        width={width}
-        height={height}
-      />
       <Line />
       <motion.p
         animate={{ opacity: 1 }}
@@ -55,29 +38,11 @@ export const Splash = ({ section }) => {
         Thanks for checking out my site!
       </motion.p>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <motion.div
-          drag
-          dragConstraints={{
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-          }}
-          onDrag={() => {
-            if (!showConfetti) {
-              setShowConfetti(true);
-            }
-          }}
-        >
-          <motion.h1
-            whileHover={{ scale: 1.05 }}
-            style={{ textAlign: "center", cursor: "grab" }}
-          >
-            Nathan
-            <br />
-            Macfarlane
-          </motion.h1>
-        </motion.div>
+        <motion.h1 style={{ textAlign: "center" }}>
+          Nathan
+          <br />
+          Macfarlane
+        </motion.h1>
       </div>
       <motion.div
         className={`arrow-wrapper ${className}`}
