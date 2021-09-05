@@ -1,59 +1,59 @@
-@import 'colors';
-@import 'fonts';
+@import "colors";
+@import "fonts";
 
 html {
-    background-color: $background-primary-color;
-    color: $text-primary-color;
-    font-family: $primary-font;
+  background-color: $background-primary-color;
+  color: $text-primary-color;
+  font-family: $primary-font;
 }
 
 a {
-    color: $text-primary-color;
-    text-decoration: none;
+  color: $text-primary-color;
+  text-decoration: none;
 }
 
 .wrapper {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .content {
-    width: 60vw;
+  width: 60vw;
 }
 
 .mono {
-    font-family: $mono-font;
-    font-size: 1.5em;
+  font-family: $mono-font;
+  font-size: 1.5em;
 }
 
 .flex {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 @font-face {
-    font-family: 'Regattia';
-    src: local('Regattia'), url(./Regattia-Bold.woff) format('woff');
+  font-family: "Regattia";
+  src: local("Regattia"), url(./Regattia-Bold.woff) format("woff");
 }
 
 @font-face {
-    font-family: 'Avenir-Medium';
-    src: local('Avenir'), url(./Avenir-Medium.woff) format('woff');
+  font-family: "Avenir-Medium";
+  src: local("Avenir"), url(./Avenir-Medium.woff) format("woff");
 }
 
 @font-face {
-    font-family: 'Avenir-Light';
-    src: local('Avenir'), url(./Avenir-Light.woff) format('woff');
+  font-family: "Avenir-Light";
+  src: local("Avenir"), url(./Avenir-Light.woff) format("woff");
 }
 
 .div-visible {
-    visibility: visible;
-    opacity: 1;
-    transition: opacity 0.1s, visibility 0.1s;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.1s, visibility 0.1s;
 }
 
 .div-hidden {
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.1s, visibility 0.1s;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.1s, visibility 0.1s;
 }
