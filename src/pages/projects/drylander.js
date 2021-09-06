@@ -4,8 +4,11 @@ import { ProjectWrapper, ProjectImage } from "../../components/ProjectWrapper";
 import image0 from "../../images/projects/drylander-0.png";
 import image1 from "../../images/projects/drylander-1.png";
 import image2 from "../../images/projects/drylander-2.png";
+import { useIsMobile } from "../../hooks/useIsMobile";
 
 const Project = () => {
+  const isMobile = useIsMobile();
+
   return (
     <ProjectWrapper title="Drylander Winery">
       <h2>Project Summary</h2>
@@ -28,7 +31,7 @@ const Project = () => {
       <br />
 
       <Grid container spacing={4}>
-        <Grid item xs={6}>
+        <Grid item xs={isMobile ? 12 : 6}>
           <h2>Admin Portal</h2>
           The most difficult and most rewarding challenge for this project was
           building a portal for admins to edit the information on their site.
@@ -42,14 +45,14 @@ const Project = () => {
           Firestore and a webhook on the front end pulls down the information
           without interruption.
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={isMobile ? 12 : 6}>
           <ProjectImage src={image0} />
         </Grid>
       </Grid>
       <br />
       <br />
       <Grid container spacing={4}>
-        <Grid item xs={6}>
+        <Grid item xs={isMobile ? 12 : 6}>
           <h2>E-Commerce</h2>
           The e-commerce on this site allows the admins to add new adn edit
           existing vintages that users can add to their cart and purchase now or
@@ -64,14 +67,14 @@ const Project = () => {
           in Firebase Firestore. This allows the user to close the site and
           return at a later point ot continue shopping or to checkout.
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={isMobile ? 12 : 6}>
           <ProjectImage src={image1} />
         </Grid>
       </Grid>
       <br />
       <br />
       <Grid container spacing={4}>
-        <Grid item xs={6}>
+        <Grid item xs={isMobile ? 12 : 6}>
           <h2>Lazy Loaded Images</h2>
           While it's easy to statically host images, allowing administrators to
           upload their own images to the site opens the door to large images
@@ -89,7 +92,7 @@ const Project = () => {
           resolution image has downloaded at which point they're swapped in
           place to give the viewer a fluid experience.
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={isMobile ? 12 : 6}>
           <ProjectImage src={image2} />
         </Grid>
       </Grid>
