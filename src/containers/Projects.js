@@ -32,6 +32,9 @@ const takeDescription = `
 
 const WebView = () => (
   <>
+    <div className="flex">
+      <TextNumber num={3} text="Projects" />
+    </div>
     <br />
     <div>
       <OverlappingDiv

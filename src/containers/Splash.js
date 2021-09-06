@@ -48,7 +48,7 @@ export const Splash = ({ section }) => {
       </div>
       <motion.div
         className={`arrow-wrapper ${className}`}
-        style={{ left: isMobile ? "45%" : "50%" }}
+        style={{ left: isMobile ? "42%" : "50%" }}
         animate={{ scale: 1.0 }}
         whileHover={{ scale: 1.2 }}
         whileTap={{ scale: 0.9 }}
