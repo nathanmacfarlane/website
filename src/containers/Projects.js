@@ -6,6 +6,9 @@ import Drylander from "../images/Drylander.png";
 import SecurityMaster from "../images/SecurityMaster.png";
 import Take from "../images/Take.png";
 import { navigate } from "gatsby";
+import { useIsMobile } from "../hooks/useIsMobile";
+import { Grid } from "@material-ui/core/";
+import { TechnologyItem } from "../components/TechnologyItem";
 
 const drylanderDescription = `
   This freelance project was designed and built by myself in Summer 2019. Over the course of several months and many
@@ -27,46 +30,115 @@ const takeDescription = `
   climbing ability and location.
 `;
 
-export const Projects = ({ section }) => {
-  return (
-    <div className={section}>
-      <div className="flex">
-        <TextNumber num={3} text="Projects" />
-      </div>
+const WebView = () => (
+  <>
+    <br />
+    <div>
+      <OverlappingDiv
+        image={SecurityMaster}
+        type="Ridgeline Apps"
+        title="Security Master"
+        orientation="left"
+        technologies={["Python", "GraphQl"]}
+        onClick={() => navigate("/projects/security-master")}
+        description={secMasterDescription}
+      />
       <br />
-      <div>
-        <OverlappingDiv
+      <br />
+      <OverlappingDiv
+        image={Drylander}
+        type="Freelance"
+        title="Drylander Winery"
+        orientation="right"
+        technologies={["GCP", "React"]}
+        onClick={() => navigate("/projects/drylander")}
+        description={drylanderDescription}
+      />
+      <br />
+      <br />
+      <OverlappingDiv
+        image={Take}
+        type="Senior Project"
+        title="Take Climbing App"
+        orientation="left"
+        technologies={["AR", "Swift", "Mountain Project APIs"]}
+        onClick={() => navigate("/projects/take")}
+        description={takeDescription}
+      />
+    </div>
+  </>
+);
+
+const MobileItem = ({
+  image,
+  type,
+  title,
+  technologies,
+  onClick,
+  description,
+}) => {
+  return (
+    <div className="project-item" onClick={onClick}>
+      <h2 className="type">{type}</h2>
+      <h3 className="title">{title}</h3>
+      <p className="description">{description}</p>
+      <Grid container>
+        {technologies.map((tech) => {
+          return (
+            <Grid item key={tech} xs={6}>
+              <TechnologyItem text={tech} />
+            </Grid>
+          );
+        })}
+      </Grid>
+      <img src={image} style={{ paddingTop: 20 }} width="100%" />
+    </div>
+  );
+};
+
+const MobileView = () => (
+  <>
+    <div className="flex">
+      <TextNumber num={3} text="Projects" />
+    </div>
+    <Grid container spacing={4}>
+      <Grid item>
+        <MobileItem
           image={SecurityMaster}
           type="Ridgeline Apps"
           title="Security Master"
-          orientation="left"
           technologies={["Python", "GraphQl"]}
           onClick={() => navigate("/projects/security-master")}
           description={secMasterDescription}
         />
-        <br />
-        <br />
-        <OverlappingDiv
+      </Grid>
+      <Grid item>
+        <MobileItem
           image={Drylander}
           type="Freelance"
           title="Drylander Winery"
-          orientation="right"
           technologies={["GCP", "React"]}
           onClick={() => navigate("/projects/drylander")}
           description={drylanderDescription}
         />
-        <br />
-        <br />
-        <OverlappingDiv
+      </Grid>
+      <Grid item>
+        <MobileItem
           image={Take}
           type="Senior Project"
           title="Take Climbing App"
-          orientation="left"
           technologies={["AR", "Swift", "Mountain Project APIs"]}
           onClick={() => navigate("/projects/take")}
           description={takeDescription}
         />
-      </div>
-    </div>
+      </Grid>
+    </Grid>
+  </>
+);
+
+export const Projects = ({ section }) => {
+  const isMobile = useIsMobile();
+  return (
+    <div className={section}>{isMobile ? <MobileView /> : <WebView />}</div>
   );
 };

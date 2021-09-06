@@ -1,6 +1,7 @@
 import * as React from "react";
 import { TextNumber } from "../components/TextNumber";
 import { TechnologyItem } from "../components/TechnologyItem";
+import { useIsMobile } from "../hooks/useIsMobile";
 import { Grid } from "@material-ui/core/";
 import "../styles/Experience.scss";
 
@@ -43,6 +44,8 @@ const Item = ({ company, role, description, technologies }) => {
 };
 
 export const Experience = ({ section }) => {
+  const isMobile = useIsMobile();
+
   return (
     <div className={section}>
       <div className="flex">
@@ -51,7 +54,7 @@ export const Experience = ({ section }) => {
       <br />
       <br />
       <Grid container spacing={5}>
-        <Grid item xs={6}>
+        <Grid item xs={isMobile ? 12 : 6}>
           <Item
             company="Ridgeline Apps"
             role="Product Engineer • Technical Lead"
@@ -59,7 +62,7 @@ export const Experience = ({ section }) => {
             technologies={["React", "Python", "AWS"]}
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={isMobile ? 12 : 6}>
           <Item
             company="Cal Poly SLO"
             role="Teacher Assitant"
@@ -67,7 +70,7 @@ export const Experience = ({ section }) => {
             technologies={["Swift", "Kotlin"]}
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={isMobile ? 12 : 6}>
           <Item
             company="Tapestry Solutions"
             role="Software Engineer"

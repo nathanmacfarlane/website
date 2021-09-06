@@ -5,13 +5,13 @@ import { Icon } from "../components/Icon";
 import { Shake } from "../components/Shake";
 import { motion } from "framer-motion";
 import { useScroll } from "../hooks/useScroll";
-
-// Check if window is defined (so if in the browser or in node.js).
-const isBrowser = typeof window !== "undefined";
+import { useIsMobile } from "../hooks/useIsMobile";
 
 export const Splash = ({ section }) => {
   const { y, scrollTo } = useScroll();
   const [className, setClassName] = React.useState("div-hidden");
+
+  const isMobile = useIsMobile();
 
   React.useEffect(() => {
     if (y !== undefined && y < 100) {
@@ -38,7 +38,9 @@ export const Splash = ({ section }) => {
         Thanks for checking out my site!
       </motion.p>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <motion.h1 style={{ textAlign: "center" }}>
+        <motion.h1
+          style={{ textAlign: "center", fontSize: isMobile ? "3em" : "6em" }}
+        >
           Nathan
           <br />
           Macfarlane
@@ -46,6 +48,7 @@ export const Splash = ({ section }) => {
       </div>
       <motion.div
         className={`arrow-wrapper ${className}`}
+        style={{ left: isMobile ? "45%" : "50%" }}
         animate={{ scale: 1.0 }}
         whileHover={{ scale: 1.2 }}
         whileTap={{ scale: 0.9 }}

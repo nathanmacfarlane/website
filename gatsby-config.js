@@ -4,6 +4,7 @@ module.exports = {
     title: "Portfolio",
   },
   plugins: [
+    "gatsby-plugin-breakpoints",
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-transformer-remark`,

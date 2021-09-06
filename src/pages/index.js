@@ -8,12 +8,14 @@ import { Contact } from "../containers/Contact";
 import { FullHeight } from "../components/FullHeight";
 import { graphql } from "gatsby";
 import "../styles/App.scss";
+import { useIsMobile } from "../hooks/useIsMobile";
 
 const App = ({ data }) => {
-  console.log(data);
+  const isMobile = useIsMobile();
+
   return (
     <div className="wrapper">
-      <div className="content">
+      <div style={{ width: isMobile ? "80vw" : "60vw" }}>
         <NavBar />
         <FullHeight minHeight="100vh">
           <Splash section="section-1" />

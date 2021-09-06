@@ -57,8 +57,9 @@ export const OverlappingDiv = ({
                     paddingLeft: isLeft ? (index === 0 ? 0 : 20) : undefined,
                     paddingRight: isLeft ? undefined : index === 0 ? 0 : 20,
                   }}
+                  key={tech}
                 >
-                  <Grid item key={tech}>
+                  <Grid item>
                     <TechnologyItem text={tech} />
                   </Grid>
                 </span>
